@@ -52,7 +52,7 @@ In reference to the diagram:
   
   - The local ECS agent is un-paused.
   
-    > *At this point the operational environment has been restored back to the [Connected Operation](#Connected Operation) scenario. eINS will continue to monitor for network outage or ECS control plane error.*
+    > *At this point the operational environment has been restored back to the [Connected Operation](#Connected-Operation) scenario. eINS will continue to monitor for network outage or ECS control plane error.*
 
 #### Notes
 
@@ -196,7 +196,7 @@ $ git clone https://github.com/aws-samples/ecs-external-instance-network-sentry.
 
 At this point the external instance host operating system is ready to run the eINS. For testing or evaluation the application can be launched manually.
 
-The application is located within the `/python` directory of the git repository. See the [Configuration Parameters](#Configuration Parameters) section for required and optional parameters to be submitted at runtime. Remember to provide the correct AWS region code:
+The application is located within the `/python` directory of the git repository. See the [Configuration Parameters](#Configuration-Parameters) section for required and optional parameters to be submitted at runtime. Remember to provide the correct AWS region code:
 
 ```bash
 # manual launch..
@@ -247,7 +247,7 @@ WantedBy=multi-user.target
 Make necessary modifications to the service unit config file `ExecStart` directive on line-11 as follows:
 
 - Update the `--region` configuration parameter with the AWS region name where your on-region ECS cluster is provisioned.
-- Optionally, include any additional [Configuration Parameters](#Configuration Parameters) to suit the particular requirements of your deployment scenario.
+- Optionally, include any additional [Configuration Parameters](#Configuration-Parameters) to suit the particular requirements of your deployment scenario.
 
 ##### Configure and start service
 
@@ -348,7 +348,7 @@ Logfile will rotate at 5Mb and a history of the five most recent logfiles will b
 The eINS currently has the following limitations:
 
  - During periods where the ECS control-plane is unavailable, and there is either an external instance OS reboot or Docker daemon restart: eINS will not start previously running ECS managed containers.
- - As described in the [Disconnected Operation](#Disconnected Operation) section, containers that have been restarted during a period where the ECS control-plane is unavailable will be stopped once the ECS control plane becomes available.
+ - As described in the [Disconnected Operation](#Disconnected-Operation) section, containers that have been restarted during a period where the ECS control-plane is unavailable will be stopped once the ECS control plane becomes available.
 
 ## Security
 
