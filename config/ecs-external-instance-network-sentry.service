@@ -1,0 +1,13 @@
+[Unit]
+Description=Amazon ECS External Instance Network Service
+Documentation=https://github.com/aws-samples/ecs-external-instance-network-sentry
+Requires=docker.service
+After=ecs.service
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10s
+ExecStart=python3 /usr/bin/ecs-external-instance-network-sentry.py --region <INSERT-REGION-NAME-HERE>
+[Install]
+WantedBy=multi-user.target
