@@ -3,9 +3,9 @@
 ## Introduction
 This repository contains the application source code and end-user guide for configuring and deploying the ECS External Instance Network Sentry (eINS).
 
-The eINS has been designed to provide an additional layer of resilience for ECS external instances in deployment scenarios where connectivity to the on-region ECS control plane may be unreliable or intermittent.
+The eINS has been designed to provide an additional layer of resilience for ECS external instances in deployment scenarios where connectivity to the on-region ECS control-plane may be unreliable or intermittent.
 
-Deploying the eINS to ECS external instances will ensure that during periods where there is a loss of connectivity to the on-region ECS control plane, any ECS managed containers which exit due to error will be automatically restarted.
+Deploying the eINS to ECS external instances will ensure that during periods where there is a loss of connectivity to the on-region ECS control-plane, any ECS managed containers which exit due to error will be automatically restarted.
 
 ## Background
 
@@ -52,7 +52,7 @@ In reference to the diagram:
   
   - The local ECS agent is un-paused.
   
-    > *At this point the operational environment has been restored back to the [Connected Operation](#Connected-Operation) scenario. eINS will continue to monitor for network outage or ECS control plane error.*
+    > *At this point the operational environment has been restored back to the [Connected Operation](#Connected-Operation) scenario. eINS will continue to monitor for network outage or ECS control-plane error.*
 
 #### Notes
 
@@ -96,7 +96,7 @@ Configuration parameters are described in further detail following:
 
 ##### `--region`
 
-Provide the name of the AWS region where the ECS cluster that manages the external instance is hosted. eINS will attempt to establish a TLS connection to the ECS public endpoint at the nominated region to evaluate ECS control plane availability.
+Provide the name of the AWS region where the ECS cluster that manages the external instance is hosted. eINS will attempt to establish a TLS connection to the ECS public endpoint at the nominated region to evaluate ECS control-plane availability.
 
 - optional=no
 
@@ -348,7 +348,7 @@ Logfile will rotate at 5Mb and a history of the five most recent logfiles will b
 The eINS currently has the following limitations:
 
  - During periods where the ECS control-plane is unavailable, and there is either an external instance OS reboot or Docker daemon restart: eINS will not start previously running ECS managed containers.
- - As described in the [Disconnected Operation](#Disconnected-Operation) section, containers that have been restarted during a period where the ECS control-plane is unavailable will be stopped once the ECS control plane becomes available.
+ - As described in the [Disconnected Operation](#Disconnected-Operation) section, containers that have been restarted during a period where the ECS control-plane is unavailable will be stopped once the ECS control-plane becomes available.
 
 ## Security
 
