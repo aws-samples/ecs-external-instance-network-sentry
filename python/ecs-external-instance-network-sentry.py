@@ -135,7 +135,7 @@ while True:
             if container.name != "ecs-agent":
                 if "com.amazonaws.ecs.cluster" in container.labels:
                     
-    				# update ecs managed containers:
+                    # update ecs managed containers:
                     #   - stop & remove containers that have restarted..
                     if (container.attrs["HostConfig"]["RestartPolicy"]["Name"]) == "on-failure":
                         if container.attrs["RestartCount"] > 0:
