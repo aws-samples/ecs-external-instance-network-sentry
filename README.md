@@ -170,7 +170,7 @@ For each external instance you register with an Amazon ECS cluster, it requires 
 
 The eINS has been developed and tested running on Python version 3.8.10.
 
-#### Python Docker API
+#### Python Docker SDK
 
 The eINS interacts with the Docker API, which requires installation of the Python Docker SDK on each external instance where the eINS will run. To install the Python Docker SDK, run the commands as follows:
 
@@ -333,7 +333,7 @@ The following eINS logfile excerpt illustrates;
 2021-07-10 09:41:30,621 INFO PID_713928 [ecs-online] ecs cluster: ecs-anywhere-cluster-1
 2021-07-10 09:41:30,622 INFO PID_713928 [ecs-online] container has been restarted by docker, stopping & removing..
 2021-07-10 09:41:41,330 INFO PID_713928 [ecs-online] container name: ecs-nginx-1-nginx-eaa6e7a9b0cd88988201
-2021-07-10 09:41:41,330 INFO PID_713928 [ecs-online] ecs cluster: ecsAnywhere
+2021-07-10 09:41:41,330 INFO PID_713928 [ecs-online] ecs cluster: ecs-anywhere-cluster-1
 2021-07-10 09:41:41,331 INFO PID_713928 [ecs-online] set container restart policy: {'Name': 'no', 'MaximumRetryCount': 0}
 2021-07-10 09:41:41,470 INFO PID_713928 [ecs-online] ecs agent unpaused..
 2021-07-10 09:41:41,471 INFO PID_713928 [end] sleeping for 10 seconds..
