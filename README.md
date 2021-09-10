@@ -43,8 +43,10 @@ The eINS periodically attempts to establish a TLS connection with the ECS on-reg
 In reference to the diagram:
 
 - eINS TLS connection with the ECS on-region control-plane [1] experiences timeout or return error condition:
-- - The ECS agent is paused [3] via the local Docker API [2]*.
+
+  - The ECS agent is paused [3] via the local Docker API [2]*.
   - eINS updates Docker restart policy updated to `on-failure` for each ECS managed container [4]. This ensures that containers exiting with an error code will be automatically restarted by the Docker daemon.
+
 - When the ECS control-plane becomes reachable:
   - ECS managed containers that have been automatically restarted by the Docker daemon during network outage are stopped and removed.**
   
