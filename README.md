@@ -5,7 +5,10 @@ This repository contains the application source code and end-user guide for conf
 
 The eINS has been designed to provide an additional layer of resilience for ECS external instances in deployment scenarios where connectivity to the on-region ECS control-plane may be unreliable or intermittent.
 
-Deploying the eINS to ECS external instances will ensure that during periods where there is a loss of connectivity to the on-region ECS control-plane, any ECS managed containers which exit due to error will be automatically restarted.
+Deploying the eINS to ECS external instances will ensure that during periods where there is a loss of connectivity to the on-region ECS control-plane, any ECS managed containers will be restarted if:
+ - the container exits due to an error, which manifests as a non-zero exit code;
+ - the Docker daemon is restarted, or;
+ - the external instance is rebooted.
 
 ## Background
 
@@ -17,7 +20,7 @@ During normal operation, where there is network connectivity between an ECS exte
 
 For the duration of time that an ECS external instance loses network connectivity to the ECS on-region control-plane, any managed containers which have stopped due to an error will not be restarted by ECS until the point in time that network connectivity to the ECS on-region control-plane has been restored.
 
-The eINS has been designed to detect any loss of connectivity to the on-region ECS control-plane, and to proactively ensure that for the duration of the outage that ECS managed containers which stop due to an error condition are automatically restarted.
+The eINS has been designed to detect any loss of connectivity to the on-region ECS control-plane, and to proactively ensure that for the duration of the outage that ECS managed containers which stop due to an error condition, Docker daemon restart, or external instance reboot are automatically restarted.
 
 ## Overview
 The eINS is a Python application which can either be run manually, or be configured to run as a service on ECS Anywhere external instances. *See the [Installation](#Installation) section below for instruction for both deployment scenarios.*
@@ -43,17 +46,14 @@ The eINS periodically attempts to establish a TLS connection with the ECS on-reg
 In reference to the diagram:
 
 - eINS TLS connection with the ECS on-region control-plane [1] experiences timeout or return error condition:
-
   - The ECS agent is paused [3] via the local Docker API [2]*.
-  - eINS updates Docker restart policy updated to `on-failure` for each ECS managed container [4]. This ensures that containers exiting with an error code will be automatically restarted by the Docker daemon.
+  - eINS updates Docker restart policy updated to `on-failure` for each ECS managed container [4]. This ensures that any ECS managed containers will be restarted if exiting due to error, the Docker daemon is restarted, or the external instance is rebooted.
 
 - When the ECS control-plane becomes reachable:
   - ECS managed containers that have been automatically restarted by the Docker daemon during network outage are stopped and removed.**
-  
   - ECS managed containers that have not been automatically restarted during network outage have their Docker restart policy set back to `no`.
-  
   - The local ECS agent is un-paused.
-  
+
     > *At this point the operational environment has been restored back to the [Connected Operation](#Connected-Operation) scenario. eINS will continue to monitor for network outage or ECS control-plane error.*
 
 #### Notes
