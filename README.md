@@ -202,7 +202,7 @@ The application is located within the `/python` directory of the git repository.
 
 ```bash
 # manual launch..
-$ python3 /python/ecs-external-instance-network-sentry.py --region ap-southeast-2
+$ python3 python/ecs-external-instance-network-sentry.py --region ap-southeast-2
 ```
 
 ### Background Service
@@ -219,9 +219,9 @@ Run the following commands to copy application and configuration files to the ap
 
 ```bash
 # copy eins application file..
-$ cp /python/ecs-external-instance-network-sentry.py /usr/bin
+$ cp python/ecs-external-instance-network-sentry.py /usr/bin
 # copy eins service unit config file..
-$ cp /config/ecs-external-instance-network-sentry.service /lib/systemd/system
+$ cp config/ecs-external-instance-network-sentry.service /lib/systemd/system
 ```
 
 ##### Update service unit configuration file
@@ -259,7 +259,7 @@ $ systemctl daemon-reload
 # enable eins service..
 $ sudo systemctl enable ecs-external-instance-network-sentry.service
 # start eins service..
-$ systemctl start ecs-external-network-sentry
+$ systemctl start ecs-external-instance-network-sentry
 ```
 
 ##### Check service status
