@@ -347,9 +347,8 @@ Logfile will rotate at 5Mb and a history of the five most recent logfiles will b
 
 ## Considerations
 
-The eINS currently has the following limitations:
+The eINS currently has the following limitation:
 
- - During periods where the ECS control-plane is unavailable, and there is either an external instance OS reboot or Docker daemon restart: eINS will not start previously running ECS managed containers.
  - As described in the [Disconnected Operation](#Disconnected-Operation) section, containers that have been restarted during a period where the ECS control-plane is unavailable will be stopped once the ECS control-plane becomes available.
 
 ## Security
