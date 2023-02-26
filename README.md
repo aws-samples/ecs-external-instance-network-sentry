@@ -5,9 +5,9 @@ This repository contains the application source code and end-user guide for conf
 
 The eINS has been designed to provide an additional layer of resilience for ECS external instances in deployment scenarios where connectivity to the on-region ECS control-plane may be unreliable or intermittent.
 
-Deploying the eINS to ECS external instances will ensure that during periods where there is a loss of connectivity to the on-region ECS control-plane, any ECS managed containers will be restarted if:
+Deploying the eINS to ECS external instances will ensure that during periods where there is a loss of connectivity to the on-region ECS control-plane, any ECS managed containers will be restarted in any of the following circumstances:
  - the container exits due to an error, which manifests as a non-zero exit code;
- - the Docker daemon is restarted, or;
+ - the Docker daemon is restarted;
  - the external instance is rebooted.
 
 ## Background
